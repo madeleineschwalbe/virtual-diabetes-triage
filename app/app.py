@@ -9,6 +9,7 @@ app = FastAPI(title="Virtual Diabetes Clinic")
 model = joblib.load("app/model.pkl")
 MODEL_VERSION = "v0.1"
 
+
 # Define input schema
 class PatientFeatures(BaseModel):
     age: float
@@ -22,17 +23,29 @@ class PatientFeatures(BaseModel):
     s5: float
     s6: float
 
+
 @app.get("/health")
 def health():
     return {"status": "ok", "model_version": MODEL_VERSION}
 
+
 @app.post("/predict")
 def predict(features: PatientFeatures):
     try:
-        data = [[
-            features.age, features.sex, features.bmi, features.bp,
-            features.s1, features.s2, features.s3, features.s4, features.s5, features.s6
-        ]]
+        data = [
+            [
+                features.age,
+                features.sex,
+                features.bmi,
+                features.bp,
+                features.s1,
+                features.s2,
+                features.s3,
+                features.s4,
+                features.s5,
+                features.s6,
+            ]
+        ]
         prediction = model.predict(data)[0]
         return {"prediction": float(prediction)}
     except Exception:
