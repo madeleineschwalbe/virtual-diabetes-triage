@@ -6,7 +6,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import json
-import pandas
 import numpy as np
 
 
@@ -20,7 +19,10 @@ def train_model():
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
     # Create a pipeline with scaling + linear regression
-    pipeline = Pipeline([("scaler", StandardScaler()), ("model", LinearRegression())])
+    pipeline = Pipeline([
+        ("scaler", StandardScaler()),
+        ("model", LinearRegression()),
+    ])
 
     # Train the model
     pipeline.fit(X_train, y_train)

@@ -33,6 +33,9 @@ jobs:
           pip install flake8
           flake8 app tests
 
+      - name: Train model
+        run: python app/train.py
+
       - name: Run tests
         run: |
           pip install pytest

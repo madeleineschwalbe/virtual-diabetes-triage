@@ -3,11 +3,13 @@ anyio==4.11.0
 click==8.3.0
 fastapi==0.119.0
 h11==0.16.0
+httpx==0.28.1
 idna==3.11
 iniconfig==2.1.0
 joblib==1.5.2
 numpy==2.3.4
 packaging==25.0
+pandas==3.0.5
 pluggy==1.6.0
 pydantic==2.12.2
 pydantic_core==2.41.4

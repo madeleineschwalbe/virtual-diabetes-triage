@@ -11,6 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy all project files into container
 COPY . .
 
+# Train the model so the image is self-contained (model.pkl is not committed)
+RUN python app/train.py
+
 # Expose port 8000 (FastAPI default)
 EXPOSE 8000
 
